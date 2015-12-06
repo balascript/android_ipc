@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, operations_list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         operations.setAdapter(dataAdapter);
-        operations.setSelection(3);// default Division
+        operations.setSelection(3);// default Division operation
         Perform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

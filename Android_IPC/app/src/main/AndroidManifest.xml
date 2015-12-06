@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.humandroid.android_ipc">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -34,14 +35,25 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".MathOperationsActivity"
-            android:label="Android IPC Intent">
+        <activity android:name="com.humandroid.android_ipc.MathOperationsActivity"
+            android:label="Android IPC Intent"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="math.intent.humandroid"></category>
-
+                <action android:name="android.intent.action.calculate_with_UI"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <receiver android:name=".MathOperationsReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.calculate_without_UI" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
